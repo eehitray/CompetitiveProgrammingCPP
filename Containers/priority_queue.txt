@@ -1,0 +1,105 @@
+priority_queue
+
+<queue>
+
+Container that keeps the greatest element avaliable to access.
+
+------------------------------------------------------
+
+Constructor:
+priority_queue<type> var;
+
+------------------------------------------------------
+
+push(var)
+
+Pushes var into the priority queue.
+
+------------------------------------------------------
+
+emplace(var)
+
+Pushes var into the priority queue. Seemingly faster than push() [this
+applies to all containers, with emplace_back and push_back], for reasons
+I haven't understood yet.
+
+------------------------------------------------------
+
+pop()
+
+Removes the topmost (greatest) value from the queue and returns it.
+
+------------------------------------------------------
+
+top()
+
+Returns the topmost (greatest) value from the queue and returns it 
+without removing it.
+
+------------------------------------------------------
+
+empty()
+
+Returns true if queue is empty, false otherwise.
+
+------------------------------------------------------
+
+size()
+
+Returns the size of the priority queue.
+
+------------------------------------------------------
+
+swap(var)
+
+Equivalent to:
+
+priority_queue<int> x, var;
+... // Pushes and pops to x and var
+
+//x.swap(var) is:
+priority_queue<int> temp = x;
+x = var;
+var = temp;
+
+------------------------------------------------------
+
+Standard example:
+
+priority_queue<int> x;
+x.emplace(15);
+x.emplace(30);
+
+cout << x.pop(); // Outputs 30
+cout << x.pop(); // Outputs 15
+cout << x.empty(); // Outputs true
+
+------------------------------------------------------
+
+Interesting use cases:
+
+As specified, the priority queue is great for maintaining sorted arrays
+when only the largest (or the least, see below) value is required at a 
+given time.
+
+In order to maintain a "reverse" priority queue i.e. minimum element first,
+push negative elements, and negate them during usage:
+
+priority_queue<int> x;
+x.emplace(-15);
+x.emplace(-30); // -15 is greater than -30, so -15 is at the top
+
+cout << -1 * x.pop(); // Outputs 15
+cout << -1 * x.pop(); // Outputs 30
+cout << x.empty(); // Outputs true
+
+------------------------------------------------------
+
+Example problems:
+
+Prateek and theories
+https://www.hackerearth.com/practice/algorithms/dynamic-programming/introduction-to-dynamic-programming-1/practice-problems/algorithm/prateek-and-theories-3/
+
+Uses a reverse priority queue.
+
+
