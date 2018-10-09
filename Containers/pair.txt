@@ -1,0 +1,90 @@
+pair
+
+<utility>
+
+Container that stores two values (of possibly different types).
+
+------------------------------------------------------
+
+Constructor:
+
+pair<type1, type2> var;
+pair<type1, type2> var1 (value1, value2);
+pair<type1, type2> var2 = make_pair(value1, value2);
+
+------------------------------------------------------
+
+Access
+
+var.first gets the first element.
+cout << var.first << endl;
+var.first = 15;
+and so on.
+
+var.second gets the second element.
+cout << var.second << endl;
+var.second = 15;
+and so on.
+
+------------------------------------------------------
+
+Comparison
+
+For two pairs var1 and var2, var1 > var2 if:
+(var1.first > var2.first) || 
+(var1.first == var2.first && var1.second > var2.second)
+
+In simpler words, comparison is based on first element and then 
+second.
+
+------------------------------------------------------
+
+swap(var)
+
+Similar to swap for other containers (see priority_queue for 
+explanation)
+
+------------------------------------------------------
+
+Standard example:
+
+vector<pair<int, int>> v;
+v.push_back(pair<int, int> (4, 3));
+v.push_back(make_pair(5, 7));
+v.emplace_back(8, 2);
+v.emplace_back(pair<int, int> (10, 9));
+v.emplace_back(make_pair(10, 2));
+
+cout << v[0].first << " " << v[0].second << endl;
+cout << v[1].first << " " << v[1].second << endl;
+cout << v[2].first << " " << v[2].second << endl;
+cout << v[3].first << " " << v[3].second << endl;
+cout << v[4].first << " " << v[4].second << endl;
+
+Output:
+4 3
+5 7
+8 2
+10 9
+10 2
+
+------------------------------------------------------
+
+Interesting use cases:
+
+Pairs in vectors are a good subsitute for maps when the
+keys may be repeated, and when sorting/reordering in general 
+is required.
+
+Note that pairs can also be inserted into maps, although
+I don't see the reason to. I do this for the problem
+Palindrome Dance on CodeForces.
+
+------------------------------------------------------
+
+Example problems:
+
+0-1 Knapsack Problem
+https://www.codechef.com/problems/KNAPSACK
+
+Uses a pair vector as a "reverse sorted map".
